@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/upload.css') }}">
+    <script src="{{ url_for('static', filename='js/upload.js') }}" defer></script>
+    <title>Upload de Arquivo</title>
+</head>
+<body>
+    <nav class="navBar">
+        <a href="{{ url_for('page.main_page') }}" class="navBarA"><span class="material-symbols-outlined ASpan">home</span></a>
+        <a href="{{ url_for('page.upload_page') }}" class="navBarA"><span class="material-symbols-outlined ASpan">cloud_upload</span></a>
+        <a href="{{ url_for('page.download_page') }}" class="navBarA"><span class="material-symbols-outlined ASpan">cloud_download</span></a>
+    </nav>
+    <main class="mainContent">
+        <div class="mainContentDiv">
+            <h1 class="mainContentH1">Faça o upload de arquivos para o servidor para backup</h1>
+            <label for="fileUpload" class="fileLabel">
+                <span class="material-symbols-outlined fileLabelSpan">upload</span>
+                <span class="fileUploadSpan">Escolher arquivo</span>
+                <input type="file" id="fileUpload" name="file" class="fileInput">
+            </label>
+            <div id="messageContainer"></div>
+        </div>
+    </main>
+</body>
+</html>

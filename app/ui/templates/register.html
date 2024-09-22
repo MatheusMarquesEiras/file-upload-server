@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}" defer>
+    <script src="{{ url_for('static', filename='js/register.js') }}" defer></script>
+    <title>Registrar</title>
+</head>
+<body>
+    <main class="mainContent">
+        <h1 class="mainContentH1">Registrar</h1>
+        <form id="RegisterForm" action="" class="mainContentForm">
+            <input type="text" class="mainContentFormInput" placeholder="Usuário" name="username">
+            <input type="password" class="mainContentFormInput" placeholder="Senha" name="password">
+        </form>
+        <div class="mainContentDiv">
+            <p>Já tem conta? clique <a href="{{ url_for('page.login_page') }}" class="mainContentDivPA">Aqui</a></p>
+        </div>
+        <button type="submit" form="RegisterForm" class="RegisterFormButton">Registrar</button>
+    </main>
+</body>
+</html>

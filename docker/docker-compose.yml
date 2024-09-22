@@ -1,6 +1,17 @@
 version: '3'
 
-services:
+services:    
+  db:
+    image: postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=data_db
+    volumes:
+      - ../db:/var/lib/postgresql/data
+
   app:
     build:
       context: ..
@@ -9,4 +20,6 @@ services:
     ports:
       - "3333:3333"
     volumes:
-      - ../uploads:/usr/app/uploads 
+      - ../uploads:/uploads
+    depends_on:
+      - db

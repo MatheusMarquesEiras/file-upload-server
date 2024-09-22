@@ -1,0 +1,87 @@
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+a{
+    text-decoration: none;
+}
+
+.navBar{
+    height: 10%;
+    display: flex;
+    background-color: rgb(119, 221, 255);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.navBarA{
+    width: 33.3%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navBarA:hover{
+    background-color: rgb(191, 240, 255);
+}
+
+.ASpan{
+    font-size: 3rem;
+    color: black;
+}
+
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 90%;
+    background-color: rgb(0, 191, 255);
+}
+
+.mainContentDiv{
+    background-color: aliceblue;
+    width: 50%;
+    height: 70%;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mainContentH1{
+    margin-bottom: 5%;
+    font-size: 2rem;
+    font-weight: bolder;
+}
+
+.fileLabel{
+    height: 70%;
+    width: 80%;
+    border: dashed 4px rgb(0, 191, 255);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+}
+
+.fileLabelSpan{
+    font-size: 4rem;
+    margin-bottom: 5%;
+}
+
+.fileUploadSpan{
+    font-size: 2rem;
+}
+
+.fileInput {
+    display: none; 
+} 
+
