@@ -3,7 +3,7 @@ from sqlalchemy.orm import sessionmaker
 
 class DBConnector:
     def __init__(self):
-        self.url = 'postgresql+psycopg2://root:root@db:5432/data_db'
+        self.url = 'postgresql+psycopg2://root:root@postdb:5432/data_db'
         self.engine = create_engine(
             url=self.url
         )
