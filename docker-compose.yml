@@ -1,0 +1,13 @@
+services:
+  app:
+    build: .
+    container_name: workant
+    ports:
+      - "8000:8000"
+    volumes:
+      # Arquivos enviados + banco SQLite ficam no volume e sobrevivem a rebuilds
+      - workant_data:/data
+    restart: unless-stopped
+
+volumes:
+  workant_data:
