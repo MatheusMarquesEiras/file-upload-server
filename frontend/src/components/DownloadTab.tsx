@@ -180,25 +180,25 @@ export default function DownloadTab({ settings }: Props) {
       <>
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-semibold text-stone-800">Pastas disponíveis</h2>
+            <h2 className="text-base font-semibold text-slate-800">Pastas disponíveis</h2>
             <button
               onClick={loadFolders}
               disabled={loading}
-              className="text-sm text-amber-600 hover:text-amber-800 disabled:opacity-50 font-medium"
+              className="text-sm text-green-600 hover:text-green-800 disabled:opacity-50 font-medium"
             >
               {loading ? 'Carregando...' : '↺ Atualizar'}
             </button>
           </div>
 
           {loading && (
-            <div className="text-center py-16 text-stone-400">
+            <div className="text-center py-16 text-slate-400">
               <div className="text-4xl mb-3 animate-pulse">📂</div>
               <p className="text-sm">Carregando pastas...</p>
             </div>
           )}
 
           {!loading && folders.length === 0 && (
-            <div className="text-center py-16 text-stone-400">
+            <div className="text-center py-16 text-slate-400">
               <div className="text-5xl mb-3">📭</div>
               <p className="font-medium">Nenhuma pasta disponível</p>
               <p className="text-sm mt-1">Envie uma pasta na aba Enviar primeiro</p>
@@ -209,18 +209,18 @@ export default function DownloadTab({ settings }: Props) {
             {folders.map((folder) => (
               <div
                 key={folder.id}
-                className="bg-white border border-stone-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow"
+                className="bg-white border border-slate-200 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start gap-3">
                   <span className="text-3xl flex-shrink-0 mt-0.5">📁</span>
                   <div className="flex-1 min-w-0">
-                    <p className="font-semibold text-stone-800 truncate text-sm sm:text-base">
+                    <p className="font-semibold text-slate-800 truncate text-sm sm:text-base">
                       {folder.original_name}
                     </p>
-                    <p className="text-xs text-stone-500 mt-0.5">
+                    <p className="text-xs text-slate-500 mt-0.5">
                       {folder.total_files} arquivo{folder.total_files !== 1 ? 's' : ''} &middot; {formatBytes(folder.total_size)}
                     </p>
-                    <p className="text-xs text-stone-400 mt-0.5">{formatDate(folder.created_at)}</p>
+                    <p className="text-xs text-slate-400 mt-0.5">{formatDate(folder.created_at)}</p>
                   </div>
                 </div>
 
@@ -228,13 +228,13 @@ export default function DownloadTab({ settings }: Props) {
                   <button
                     onClick={() => downloadFolderZip(folder)}
                     disabled={downloadingId === folder.id}
-                    className="flex-1 text-sm bg-amber-600 text-white px-3 py-2 rounded-lg hover:bg-amber-700 active:bg-amber-800 transition-colors disabled:opacity-50 font-medium"
+                    className="flex-1 text-sm bg-green-600 text-white px-3 py-2 rounded-lg hover:bg-green-700 active:bg-green-800 transition-colors disabled:opacity-50 font-medium"
                   >
                     {downloadingId === folder.id ? 'Preparando...' : '⬇ Baixar ZIP'}
                   </button>
                   <button
                     onClick={() => openBrowser(folder)}
-                    className="flex-1 text-sm border border-stone-300 bg-white text-stone-700 px-3 py-2 rounded-lg hover:bg-stone-50 transition-colors font-medium"
+                    className="flex-1 text-sm border border-slate-300 bg-white text-slate-700 px-3 py-2 rounded-lg hover:bg-slate-50 transition-colors font-medium"
                   >
                     🔍 Navegar
                   </button>
@@ -275,12 +275,12 @@ export default function DownloadTab({ settings }: Props) {
         <div className="flex items-center gap-2 flex-wrap">
           <button
             onClick={goBack}
-            className="text-sm text-amber-600 hover:text-amber-800 font-medium"
+            className="text-sm text-green-600 hover:text-green-800 font-medium"
           >
             ← Voltar
           </button>
-          <span className="text-stone-300">|</span>
-          <span className="font-semibold text-stone-800 text-sm truncate max-w-xs">
+          <span className="text-slate-300">|</span>
+          <span className="font-semibold text-slate-800 text-sm truncate max-w-xs">
             {selectedFolder?.original_name}
           </span>
           <button
@@ -292,18 +292,18 @@ export default function DownloadTab({ settings }: Props) {
         </div>
 
         {/* Breadcrumb */}
-        <div className="flex items-center gap-1 text-sm flex-wrap bg-stone-100 rounded-lg px-3 py-2">
-          <button onClick={() => setCurrentPath([])} className="text-amber-600 hover:text-amber-800 font-medium">
+        <div className="flex items-center gap-1 text-sm flex-wrap bg-slate-100 rounded-lg px-3 py-2">
+          <button onClick={() => setCurrentPath([])} className="text-green-600 hover:text-green-800 font-medium">
             📁 Raiz
           </button>
           {currentPath.map((part, i) => (
             <span key={i} className="flex items-center gap-1">
-              <span className="text-stone-400">/</span>
+              <span className="text-slate-400">/</span>
               <button
                 onClick={() => setCurrentPath(currentPath.slice(0, i + 1))}
                 className={i === currentPath.length - 1
-                  ? 'text-stone-700 font-medium cursor-default'
-                  : 'text-amber-600 hover:text-amber-800'}
+                  ? 'text-slate-700 font-medium cursor-default'
+                  : 'text-green-600 hover:text-green-800'}
               >
                 {part}
               </button>
@@ -313,17 +313,17 @@ export default function DownloadTab({ settings }: Props) {
 
         {/* Batch action bar */}
         {selected.size > 0 && (
-          <div className="bg-amber-50 border border-amber-200 rounded-xl p-3 flex items-center justify-between gap-3 flex-wrap">
-            <span className="text-sm text-amber-700 font-medium">
+          <div className="bg-green-50 border border-green-200 rounded-xl p-3 flex items-center justify-between gap-3 flex-wrap">
+            <span className="text-sm text-green-700 font-medium">
               {selected.size} arquivo{selected.size !== 1 ? 's' : ''} selecionado{selected.size !== 1 ? 's' : ''}
             </span>
             <div className="flex gap-2">
-              <button onClick={() => setSelected(new Set())} className="text-sm text-stone-600 hover:text-stone-800 font-medium">
+              <button onClick={() => setSelected(new Set())} className="text-sm text-slate-600 hover:text-slate-800 font-medium">
                 Limpar
               </button>
               <button
                 onClick={downloadBatch}
-                className="text-sm bg-amber-600 text-white px-4 py-1.5 rounded-lg hover:bg-amber-700 font-medium"
+                className="text-sm bg-green-600 text-white px-4 py-1.5 rounded-lg hover:bg-green-700 font-medium"
               >
                 ⬇ Baixar Selecionados
               </button>
@@ -332,52 +332,52 @@ export default function DownloadTab({ settings }: Props) {
         )}
 
         {loadingTree && (
-          <div className="text-center py-12 text-stone-400">
+          <div className="text-center py-12 text-slate-400">
             <div className="text-4xl mb-3 animate-pulse">📂</div>
             <p className="text-sm">Carregando arquivos...</p>
           </div>
         )}
 
         {!loadingTree && currentNode && (
-          <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
+          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
             {filesInView.length > 0 && (
-              <div className="px-4 py-2.5 border-b border-stone-100 bg-stone-50 flex items-center gap-3">
+              <div className="px-4 py-2.5 border-b border-slate-100 bg-slate-50 flex items-center gap-3">
                 <input
                   type="checkbox"
                   id="select-all"
-                  className="w-4 h-4 accent-amber-600 cursor-pointer"
+                  className="w-4 h-4 accent-green-600 cursor-pointer"
                   checked={allViewSelected}
                   onChange={toggleAllInView}
                 />
-                <label htmlFor="select-all" className="text-xs text-stone-500 cursor-pointer select-none">
+                <label htmlFor="select-all" className="text-xs text-slate-500 cursor-pointer select-none">
                   Selecionar todos os arquivos desta pasta
                 </label>
               </div>
             )}
 
             {currentChildren.length === 0 && (
-              <div className="py-10 text-center text-stone-400 text-sm">Pasta vazia</div>
+              <div className="py-10 text-center text-slate-400 text-sm">Pasta vazia</div>
             )}
 
-            <div className="divide-y divide-stone-100">
+            <div className="divide-y divide-slate-100">
               {currentChildren.map((node) => {
                 const fileCount = node.type === 'directory' ? countFiles(node) : 0
                 return (
-                  <div key={node.name} className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors">
+                  <div key={node.name} className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors">
                     {node.type === 'file' ? (
                       <>
                         <input
                           type="checkbox"
-                          className="w-4 h-4 accent-amber-600 flex-shrink-0 cursor-pointer"
+                          className="w-4 h-4 accent-green-600 flex-shrink-0 cursor-pointer"
                           checked={selected.has(node.path!)}
                           onChange={() => toggleFile(node.path!)}
                         />
                         <span className="text-xl flex-shrink-0 select-none">📄</span>
-                        <span className="flex-1 text-sm text-stone-800 truncate" title={node.name}>{node.name}</span>
-                        <span className="text-xs text-stone-400 flex-shrink-0 hidden sm:block">{formatBytes(node.size || 0)}</span>
+                        <span className="flex-1 text-sm text-slate-800 truncate" title={node.name}>{node.name}</span>
+                        <span className="text-xs text-slate-400 flex-shrink-0 hidden sm:block">{formatBytes(node.size || 0)}</span>
                         <button
                           onClick={() => downloadSingleFile(node.path!, node.name)}
-                          className="text-xs text-amber-600 hover:text-amber-800 font-medium flex-shrink-0 ml-1 px-2 py-1 rounded hover:bg-amber-50"
+                          className="text-xs text-green-600 hover:text-green-800 font-medium flex-shrink-0 ml-1 px-2 py-1 rounded hover:bg-green-50"
                         >
                           Baixar
                         </button>
@@ -388,12 +388,12 @@ export default function DownloadTab({ settings }: Props) {
                         <span className="text-xl flex-shrink-0 select-none">📁</span>
                         <button
                           onClick={() => setCurrentPath([...currentPath, node.name])}
-                          className="flex-1 text-sm text-amber-700 hover:text-amber-900 text-left font-medium truncate"
+                          className="flex-1 text-sm text-green-700 hover:text-green-900 text-left font-medium truncate"
                           title={node.name}
                         >
                           {node.name}
                         </button>
-                        <span className="text-xs text-stone-400 flex-shrink-0">
+                        <span className="text-xs text-slate-400 flex-shrink-0">
                           {fileCount} arq.
                         </span>
                       </>

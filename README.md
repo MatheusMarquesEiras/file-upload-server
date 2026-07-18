@@ -15,6 +15,26 @@
 
 ---
 
+## 🖼️ Demonstração
+
+A interface segue a identidade visual do logo: verde `#00c544`, traço ink `#09151e`
+e neutros frios, com fontes Manrope/Inter e Material Symbols.
+
+| Enviar | Receber |
+|---|---|
+| ![Aba Enviar](imgs/demo-upload.png) | ![Aba Receber](imgs/demo-download.png) |
+
+| Arquivos (busca global) | Configurações |
+|---|---|
+| ![Aba Arquivos](imgs/demo-files.png) | ![Aba Configurações](imgs/demo-settings.png) |
+
+<p align="center">
+  <img src="imgs/demo-mobile.png" alt="Versão mobile" width="260"><br>
+  <em>No celular, a sidebar vira menu retrátil</em>
+</p>
+
+---
+
 ## ✨ Funcionalidades
 
 | | |

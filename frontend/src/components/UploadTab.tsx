@@ -193,12 +193,12 @@ export default function UploadTab() {
           ${status === 'ready' ? 'p-5' : 'p-10'}
           ${
             isDragging
-              ? 'border-amber-500 bg-amber-50 scale-[1.01]'
+              ? 'border-green-500 bg-green-50 scale-[1.01]'
               : status === 'error'
               ? 'border-red-400 bg-red-50'
               : status === 'done'
               ? 'border-green-400 bg-green-50'
-              : 'border-stone-300 bg-white hover:border-amber-400 hover:bg-amber-50'
+              : 'border-slate-300 bg-white hover:border-green-400 hover:bg-green-50'
           }`}
       >
         <input
@@ -214,24 +214,24 @@ export default function UploadTab() {
         {status === 'idle' && (
           <>
             <div className="text-5xl mb-3">📁</div>
-            <p className="text-lg font-semibold text-stone-700">Arraste pastas aqui</p>
-            <p className="text-sm text-stone-400 mt-1">ou clique para abrir o explorador</p>
-            <p className="text-xs text-stone-300 mt-1">Suporta múltiplas pastas de uma vez</p>
+            <p className="text-lg font-semibold text-slate-700">Arraste pastas aqui</p>
+            <p className="text-sm text-slate-400 mt-1">ou clique para abrir o explorador</p>
+            <p className="text-xs text-slate-300 mt-1">Suporta múltiplas pastas de uma vez</p>
           </>
         )}
 
         {status === 'ready' && (
           <>
             <div className="text-2xl mb-1">➕</div>
-            <p className="text-sm font-medium text-amber-600">Adicionar mais pastas</p>
-            <p className="text-xs text-stone-400 mt-0.5">arraste ou clique aqui</p>
+            <p className="text-sm font-medium text-green-600">Adicionar mais pastas</p>
+            <p className="text-xs text-slate-400 mt-0.5">arraste ou clique aqui</p>
           </>
         )}
 
         {isUploading && (
           <>
             <div className="text-2xl mb-1">⏳</div>
-            <p className="text-sm text-stone-500">Enviando... aguarde</p>
+            <p className="text-sm text-slate-500">Enviando... aguarde</p>
           </>
         )}
 
@@ -241,7 +241,7 @@ export default function UploadTab() {
             <p className="text-sm font-semibold text-green-700">
               {folders.length} pasta{folders.length !== 1 ? 's' : ''} enviada{folders.length !== 1 ? 's' : ''}!
             </p>
-            <p className="text-xs text-stone-400 mt-0.5">Clique para enviar mais</p>
+            <p className="text-xs text-slate-400 mt-0.5">Clique para enviar mais</p>
           </>
         )}
 
@@ -249,16 +249,16 @@ export default function UploadTab() {
           <>
             <div className="text-3xl mb-1">❌</div>
             <p className="text-sm font-medium text-red-600">{error}</p>
-            <p className="text-xs text-stone-400 mt-0.5">Clique para adicionar pastas novamente</p>
+            <p className="text-xs text-slate-400 mt-0.5">Clique para adicionar pastas novamente</p>
           </>
         )}
       </div>
 
       {/* Lista de pastas selecionadas */}
       {folders.length > 0 && !isUploading && status !== 'done' && (
-        <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
-          <div className="px-4 py-2.5 border-b border-stone-100 bg-stone-50 flex items-center justify-between">
-            <span className="text-xs font-medium text-stone-500 uppercase tracking-wide">
+        <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+          <div className="px-4 py-2.5 border-b border-slate-100 bg-slate-50 flex items-center justify-between">
+            <span className="text-xs font-medium text-slate-500 uppercase tracking-wide">
               {folders.length} pasta{folders.length !== 1 ? 's' : ''} &middot; {totalFiles} arquivo{totalFiles !== 1 ? 's' : ''} &middot; {formatBytes(totalSize)}
             </span>
             <button
@@ -268,19 +268,19 @@ export default function UploadTab() {
               Limpar tudo
             </button>
           </div>
-          <div className="divide-y divide-stone-100">
+          <div className="divide-y divide-slate-100">
             {folders.map((folder, i) => (
               <div key={i} className="flex items-center gap-3 px-4 py-3">
                 <span className="text-xl flex-shrink-0">📁</span>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-stone-800 truncate">{folder.name}</p>
-                  <p className="text-xs text-stone-400">
+                  <p className="text-sm font-medium text-slate-800 truncate">{folder.name}</p>
+                  <p className="text-xs text-slate-400">
                     {folder.files.length} arquivo{folder.files.length !== 1 ? 's' : ''} &middot; {formatBytes(folder.totalSize)}
                   </p>
                 </div>
                 <button
                   onClick={(e) => { e.stopPropagation(); removeFolder(i) }}
-                  className="text-stone-300 hover:text-red-500 transition-colors flex-shrink-0 text-lg leading-none"
+                  className="text-slate-300 hover:text-red-500 transition-colors flex-shrink-0 text-lg leading-none"
                   title="Remover"
                 >
                   ×
@@ -294,22 +294,22 @@ export default function UploadTab() {
       {/* Barra de progresso durante upload */}
       {isUploading && (
         <div className="space-y-2">
-          <div className="flex justify-between text-sm font-medium text-stone-700">
+          <div className="flex justify-between text-sm font-medium text-slate-700">
             <span>
               Pasta {currentFolderIndex + 1} de {folders.length}
               {currentFolderName && (
-                <span className="font-normal text-stone-500"> — {currentFolderName}</span>
+                <span className="font-normal text-slate-500"> — {currentFolderName}</span>
               )}
             </span>
             <span>{overallProgress}%</span>
           </div>
-          <div className="w-full bg-stone-200 rounded-full h-4 overflow-hidden">
+          <div className="w-full bg-slate-200 rounded-full h-4 overflow-hidden">
             <div
-              className="bg-amber-600 h-4 rounded-full transition-all duration-300 ease-out"
+              className="bg-green-600 h-4 rounded-full transition-all duration-300 ease-out"
               style={{ width: `${overallProgress}%` }}
             />
           </div>
-          <p className="text-xs text-stone-400 text-center">Não feche esta janela durante o envio</p>
+          <p className="text-xs text-slate-400 text-center">Não feche esta janela durante o envio</p>
         </div>
       )}
 
@@ -329,7 +329,7 @@ export default function UploadTab() {
       {status === 'ready' && (
         <button
           onClick={handleUpload}
-          className="w-full bg-amber-600 text-white py-3 px-6 rounded-xl font-semibold text-sm hover:bg-amber-700 active:bg-amber-800 transition-colors shadow-sm"
+          className="w-full bg-green-600 text-white py-3 px-6 rounded-xl font-semibold text-sm hover:bg-green-700 active:bg-green-800 transition-colors shadow-sm"
         >
           Enviar {folders.length} pasta{folders.length !== 1 ? 's' : ''}
         </button>
@@ -338,7 +338,7 @@ export default function UploadTab() {
       {status === 'done' && (
         <button
           onClick={reset}
-          className="w-full border border-stone-300 bg-white text-stone-700 py-3 px-6 rounded-xl font-semibold text-sm hover:bg-stone-50 transition-colors"
+          className="w-full border border-slate-300 bg-white text-slate-700 py-3 px-6 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
         >
           Enviar Mais Pastas
         </button>
@@ -348,13 +348,13 @@ export default function UploadTab() {
         <div className="flex gap-3">
           <button
             onClick={handleUpload}
-            className="flex-1 bg-amber-600 text-white py-3 px-6 rounded-xl font-semibold text-sm hover:bg-amber-700 transition-colors"
+            className="flex-1 bg-green-600 text-white py-3 px-6 rounded-xl font-semibold text-sm hover:bg-green-700 transition-colors"
           >
             Tentar Novamente
           </button>
           <button
             onClick={reset}
-            className="flex-1 border border-stone-300 bg-white text-stone-700 py-3 px-6 rounded-xl font-semibold text-sm hover:bg-stone-50 transition-colors"
+            className="flex-1 border border-slate-300 bg-white text-slate-700 py-3 px-6 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors"
           >
             Limpar
           </button>

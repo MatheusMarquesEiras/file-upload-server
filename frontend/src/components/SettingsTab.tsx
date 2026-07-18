@@ -9,28 +9,28 @@ export default function SettingsTab({ settings, update }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-base font-semibold text-stone-800">Configurações</h2>
-        <p className="text-sm text-stone-500 mt-0.5">Preferências da aplicação</p>
+        <h2 className="text-base font-semibold text-slate-800">Configurações</h2>
+        <p className="text-sm text-slate-500 mt-0.5">Preferências da aplicação</p>
       </div>
 
       {/* Seção: Segurança */}
-      <section className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
-        <div className="px-4 py-3 border-b border-stone-100 bg-stone-50">
-          <h3 className="text-xs font-semibold text-stone-500 uppercase tracking-wide">Segurança</h3>
+      <section className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+        <div className="px-4 py-3 border-b border-slate-100 bg-slate-50">
+          <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-wide">Segurança</h3>
         </div>
 
         <div className="px-4 py-4">
           <label className="flex items-start justify-between gap-4 cursor-pointer">
             <div className="flex-1">
-              <p className="text-sm font-medium text-stone-800">
+              <p className="text-sm font-medium text-slate-800">
                 Atraso de confirmação ao apagar
               </p>
-              <p className="text-xs text-stone-500 mt-1">
+              <p className="text-xs text-slate-500 mt-1">
                 Quando ativado, o botão <strong>"Sim, apagar"</strong> só aparece após
                 5 segundos — evita exclusões acidentais de pastas.
               </p>
               {!settings.deleteDelay && (
-                <p className="text-xs text-amber-600 mt-2 font-medium">
+                <p className="text-xs text-green-600 mt-2 font-medium">
                   ⚠️ Atraso desativado — exclusões serão imediatas.
                 </p>
               )}
@@ -45,7 +45,7 @@ export default function SettingsTab({ settings, update }: Props) {
                   checked={settings.deleteDelay}
                   onChange={(e) => update({ deleteDelay: e.target.checked })}
                 />
-                <div className="w-11 h-6 bg-stone-200 rounded-full transition-colors peer-checked:bg-amber-600 peer-focus:ring-2 peer-focus:ring-amber-400 peer-focus:ring-offset-1" />
+                <div className="w-11 h-6 bg-slate-200 rounded-full transition-colors peer-checked:bg-green-600 peer-focus:ring-2 peer-focus:ring-green-400 peer-focus:ring-offset-1" />
                 <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform peer-checked:translate-x-5" />
               </label>
             </div>
@@ -53,7 +53,7 @@ export default function SettingsTab({ settings, update }: Props) {
         </div>
       </section>
 
-      <p className="text-xs text-stone-400 text-center">
+      <p className="text-xs text-slate-400 text-center">
         As configurações são salvas automaticamente neste navegador.
       </p>
     </div>

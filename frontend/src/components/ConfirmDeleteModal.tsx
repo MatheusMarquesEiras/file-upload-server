@@ -38,19 +38,19 @@ export default function ConfirmDeleteModal({ name, subtitle, type, delayEnabled,
         {/* Cabeçalho */}
         <div className="bg-red-50 px-6 pt-6 pb-4 border-b border-red-100 text-center">
           <div className="text-4xl mb-2">🗑️</div>
-          <h2 className="text-lg font-bold text-stone-800">
+          <h2 className="text-lg font-bold text-slate-800">
             {isFile ? 'Apagar arquivo?' : 'Apagar pasta?'}
           </h2>
-          <p className="text-sm text-stone-500 mt-1">Esta ação não pode ser desfeita.</p>
+          <p className="text-sm text-slate-500 mt-1">Esta ação não pode ser desfeita.</p>
         </div>
 
         {/* Detalhes */}
-        <div className="px-6 py-4 bg-stone-50 border-b border-stone-100">
+        <div className="px-6 py-4 bg-slate-50 border-b border-slate-100">
           <div className="flex items-center gap-3">
             <span className="text-2xl">{isFile ? '📄' : '📁'}</span>
             <div className="min-w-0">
-              <p className="font-semibold text-stone-800 truncate">{name}</p>
-              {subtitle && <p className="text-xs text-stone-500">{subtitle}</p>}
+              <p className="font-semibold text-slate-800 truncate">{name}</p>
+              {subtitle && <p className="text-xs text-slate-500">{subtitle}</p>}
             </div>
           </div>
         </div>
@@ -60,7 +60,7 @@ export default function ConfirmDeleteModal({ name, subtitle, type, delayEnabled,
           <button
             onClick={onCancel}
             disabled={confirming}
-            className="flex-1 border border-stone-300 bg-white text-stone-700 py-2.5 rounded-xl font-semibold text-sm hover:bg-stone-50 transition-colors disabled:opacity-50"
+            className="flex-1 border border-slate-300 bg-white text-slate-700 py-2.5 rounded-xl font-semibold text-sm hover:bg-slate-50 transition-colors disabled:opacity-50"
           >
             Cancelar
           </button>
@@ -81,7 +81,7 @@ export default function ConfirmDeleteModal({ name, subtitle, type, delayEnabled,
               )}
             </button>
           ) : (
-            <div className="flex-1 bg-stone-200 text-stone-400 py-2.5 rounded-xl font-semibold text-sm text-center select-none flex items-center justify-center gap-2 cursor-not-allowed">
+            <div className="flex-1 bg-slate-200 text-slate-400 py-2.5 rounded-xl font-semibold text-sm text-center select-none flex items-center justify-center gap-2 cursor-not-allowed">
               <span className="relative inline-flex items-center justify-center w-5 h-5">
                 <svg className="w-5 h-5 -rotate-90" viewBox="0 0 20 20">
                   <circle cx="10" cy="10" r="8" fill="none" stroke="#d1d5db" strokeWidth="2.5" />
@@ -93,7 +93,7 @@ export default function ConfirmDeleteModal({ name, subtitle, type, delayEnabled,
                     strokeLinecap="round"
                   />
                 </svg>
-                <span className="absolute text-[9px] font-bold text-stone-500">{count}</span>
+                <span className="absolute text-[9px] font-bold text-slate-500">{count}</span>
               </span>
               Aguarde...
             </div>

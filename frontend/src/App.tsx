@@ -14,14 +14,22 @@ const TABS: { id: Tab; label: string; icon: string }[] = [
   { id: 'settings', label: 'Configurações', icon: 'settings' },
 ]
 
+const TAB_IDS = TABS.map((t) => t.id)
+
+function initialTab(): Tab {
+  const hash = window.location.hash.replace('#', '')
+  return (TAB_IDS as string[]).includes(hash) ? (hash as Tab) : 'upload'
+}
+
 export default function App() {
-  const [activeTab, setActiveTab] = useState<Tab>('upload')
+  const [activeTab, setActiveTab] = useState<Tab>(initialTab)
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const { settings, update } = useSettings()
 
   const selectTab = (tab: Tab) => {
     setActiveTab(tab)
     setSidebarOpen(false)
+    window.history.replaceState(null, '', `#${tab}`)
   }
 
   return (
@@ -41,14 +49,14 @@ export default function App() {
 
       {/* SideNavBar (rail) — estilo WorkAnt */}
       <aside
-        className={`h-screen w-64 fixed left-0 top-0 bg-stone-100 flex flex-col py-6 z-50 transition-transform duration-200 md:translate-x-0 ${
+        className={`h-screen w-64 fixed left-0 top-0 bg-slate-100 flex flex-col py-6 z-50 transition-transform duration-200 md:translate-x-0 ${
           sidebarOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'
         }`}
       >
         <div className="px-6 mb-10 flex items-center gap-3">
           <img src="/logo.jpg" alt="WorkAnt" className="w-12 h-12 rounded-xl object-cover" />
           <div>
-            <h1 className="text-xl font-bold tracking-tighter text-stone-900 uppercase">WorkAnt</h1>
+            <h1 className="text-xl font-bold tracking-tighter text-slate-900 uppercase">WorkAnt</h1>
             <p className="text-[10px] uppercase tracking-widest text-secondary font-bold opacity-70">Home Server Uploads</p>
           </div>
         </div>
@@ -63,7 +71,7 @@ export default function App() {
             />
           ))}
         </nav>
-        <div className="mt-auto border-t border-stone-200/50 pt-4 px-6">
+        <div className="mt-auto border-t border-slate-200/50 pt-4 px-6">
           <p className="text-[10px] uppercase tracking-widest text-secondary font-bold opacity-70">
             Transferência na rede local
           </p>
@@ -97,8 +105,8 @@ function NavItem({ icon, label, active, onClick }: { icon: string; label: string
       onClick={onClick}
       className={`w-full flex items-center gap-3 px-4 py-3 transition-all active:scale-95 duration-150 font-headline tracking-tight text-sm font-semibold ${
         active
-          ? 'bg-amber-100 text-amber-900 border-l-4 border-amber-600'
-          : 'text-stone-600 hover:bg-stone-200 border-l-4 border-transparent'
+          ? 'bg-green-100 text-green-900 border-l-4 border-green-600'
+          : 'text-slate-600 hover:bg-slate-200 border-l-4 border-transparent'
       }`}
     >
       <span

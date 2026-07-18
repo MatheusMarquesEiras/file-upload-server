@@ -138,7 +138,7 @@ export default function FilesTab({ settings }: Props) {
       <div className="space-y-4">
         {/* Search */}
         <div className="relative">
-          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400 text-base select-none pointer-events-none">
+          <span className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-base select-none pointer-events-none">
             🔍
           </span>
           <input
@@ -146,12 +146,12 @@ export default function FilesTab({ settings }: Props) {
             value={query}
             onChange={(e) => handleSearch(e.target.value)}
             placeholder="Buscar por nome, extensão..."
-            className="w-full pl-10 pr-9 py-2.5 border border-stone-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-white"
+            className="w-full pl-10 pr-9 py-2.5 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 bg-white"
           />
           {query && (
             <button
               onClick={() => handleSearch('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600 text-xs font-bold px-1"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 text-xs font-bold px-1"
             >
               ✕
             </button>
@@ -161,7 +161,7 @@ export default function FilesTab({ settings }: Props) {
         {/* Count bar */}
         {!loading && (
           <div className="flex items-center justify-between">
-            <p className="text-xs text-stone-500">
+            <p className="text-xs text-slate-500">
               {total === 0
                 ? 'Nenhum arquivo encontrado'
                 : `${total} arquivo${total !== 1 ? 's' : ''}${query ? ` encontrado${total !== 1 ? 's' : ''}` : ''}`}
@@ -169,7 +169,7 @@ export default function FilesTab({ settings }: Props) {
             </p>
             <button
               onClick={() => fetchFiles(query, 0, false)}
-              className="text-sm text-amber-600 hover:text-amber-800 font-medium"
+              className="text-sm text-green-600 hover:text-green-800 font-medium"
             >
               ↺ Atualizar
             </button>
@@ -178,7 +178,7 @@ export default function FilesTab({ settings }: Props) {
 
         {/* Loading initial */}
         {loading && (
-          <div className="text-center py-16 text-stone-400">
+          <div className="text-center py-16 text-slate-400">
             <div className="text-4xl mb-3 animate-pulse">📂</div>
             <p className="text-sm">Carregando arquivos...</p>
           </div>
@@ -186,7 +186,7 @@ export default function FilesTab({ settings }: Props) {
 
         {/* Empty state */}
         {!loading && files.length === 0 && (
-          <div className="text-center py-16 text-stone-400">
+          <div className="text-center py-16 text-slate-400">
             <div className="text-5xl mb-3">{query ? '🔍' : '📭'}</div>
             <p className="font-medium">
               {query ? 'Nenhum arquivo corresponde à busca' : 'Nenhum arquivo disponível'}
@@ -199,25 +199,25 @@ export default function FilesTab({ settings }: Props) {
 
         {/* File list */}
         {!loading && files.length > 0 && (
-          <div className="bg-white border border-stone-200 rounded-2xl overflow-hidden shadow-sm">
-            <div className="divide-y divide-stone-100">
+          <div className="bg-white border border-slate-200 rounded-2xl overflow-hidden shadow-sm">
+            <div className="divide-y divide-slate-100">
               {files.map((file) => (
                 <div
                   key={file.id}
-                  className="flex items-center gap-3 px-4 py-3 hover:bg-stone-50 transition-colors"
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-slate-50 transition-colors"
                 >
                   <span className="text-2xl flex-shrink-0 select-none leading-none">
                     {getFileIcon(file.name)}
                   </span>
 
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm font-medium text-stone-800 leading-tight" title={file.name}>
+                    <p className="text-sm font-medium text-slate-800 leading-tight" title={file.name}>
                       {truncateMiddle(file.name)}
                     </p>
-                    <p className="text-xs text-stone-400 truncate mt-0.5">{file.folder_name}</p>
+                    <p className="text-xs text-slate-400 truncate mt-0.5">{file.folder_name}</p>
                   </div>
 
-                  <span className="text-xs text-stone-400 flex-shrink-0 hidden sm:block tabular-nums">
+                  <span className="text-xs text-slate-400 flex-shrink-0 hidden sm:block tabular-nums">
                     {formatBytes(file.size)}
                   </span>
 
@@ -226,10 +226,10 @@ export default function FilesTab({ settings }: Props) {
                     onClick={() => downloadFile(file)}
                     disabled={downloadingId === file.id}
                     title="Baixar arquivo"
-                    className="p-1.5 text-amber-500 hover:text-amber-700 hover:bg-amber-50 rounded-lg transition-colors flex-shrink-0 disabled:opacity-40"
+                    className="p-1.5 text-green-500 hover:text-green-700 hover:bg-green-50 rounded-lg transition-colors flex-shrink-0 disabled:opacity-40"
                   >
                     {downloadingId === file.id ? (
-                      <span className="inline-block w-4 h-4 border-2 border-amber-300 border-t-amber-600 rounded-full animate-spin" />
+                      <span className="inline-block w-4 h-4 border-2 border-green-300 border-t-green-600 rounded-full animate-spin" />
                     ) : (
                       <DownloadIcon />
                     )}
@@ -239,7 +239,7 @@ export default function FilesTab({ settings }: Props) {
                   <button
                     onClick={() => setFileToDelete(file)}
                     title="Apagar arquivo"
-                    className="p-1.5 text-stone-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors flex-shrink-0"
+                    className="p-1.5 text-slate-400 hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors flex-shrink-0"
                   >
                     <TrashIcon />
                   </button>
@@ -254,11 +254,11 @@ export default function FilesTab({ settings }: Props) {
           <button
             onClick={() => fetchFiles(query, files.length, true)}
             disabled={loadingMore}
-            className="w-full py-2.5 border border-stone-300 rounded-xl text-sm font-medium text-stone-600 hover:bg-stone-50 active:bg-stone-100 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-2.5 border border-slate-300 rounded-xl text-sm font-medium text-slate-600 hover:bg-slate-50 active:bg-slate-100 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
           >
             {loadingMore ? (
               <>
-                <span className="inline-block w-4 h-4 border-2 border-stone-300 border-t-stone-600 rounded-full animate-spin" />
+                <span className="inline-block w-4 h-4 border-2 border-slate-300 border-t-slate-600 rounded-full animate-spin" />
                 Carregando...
               </>
             ) : (
